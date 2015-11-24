@@ -12,7 +12,9 @@ var Aluno = function(){
   this.salvar = function(){
     //criando id automático
     this.id = (Aluno.dados.length + 1);
-    this.mediaAluno = (this.nota1 + this.nota2) / 2;
+    this.mediaAluno = (parseFloat(this.nota1) + parseFloat(this.nota2)) / 2;
+      debugger
+
     if (this.mediaAluno >= 7){
     	this.situacao = "Aprovado"
     } else if (this.mediaAluno >= 5 && this.mediaAluno < 7){
@@ -40,7 +42,8 @@ Aluno.mediaClasse = function(){
 Aluno.qtdAprovados = function(){
   var qtdAprovados = 0;
   for(i=0; i< Aluno.dados.length; i++){
-  	if (this.situacao == "Aprovado"){
+    var c = Aluno.dados[i];
+  	if (c.situacao == "Aprovado"){
   		qtdAprovados++;
   	}
   }
@@ -51,7 +54,8 @@ Aluno.qtdAprovados = function(){
 Aluno.qtdAlunosEmExame = function(){
   var qtdAlunosEmExame = 0;
   for(i=0; i< Aluno.dados.length; i++){
-  	if (this.situacao == "Exame"){
+    var c = Aluno.dados[i];
+  	if (c.situacao == "Exame"){
   		qtdAlunosEmExame++;
   	}
   }
@@ -62,7 +66,8 @@ Aluno.qtdAlunosEmExame = function(){
 Aluno.qtdAlunosReprovados = function(){
   var qtdAlunosReprovados = 0;
   for(i=0; i< Aluno.dados.length; i++){
-  	if (this.situacao == "Reprovado"){
+    var c = Aluno.dados[i];
+  	if (c.situacao == "Reprovado"){
   		qtdAlunosReprovados++;
   	}
   }

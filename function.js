@@ -36,26 +36,37 @@ function salvarAluno(){
   nome.value = "";
   nota1.value = "";
   nota2.value = "";
- /*
-  mostrarProdutosEstoque();
+
+  mostrarAlunos();
   mostrarResumo();
- */
 }
 
 
 
 
-function mostrarProdutosEstoque(){
-  var objTabela = document.getElementById("produtos");
-  var html = "<tr><td>Nome</td><td>Preço</td></tr>";
-  for(i=0; i< Produto.dados.length; i++){
-    var p = Produto.dados[i];
+function mostrarAlunos(){
+  var objTabela = document.getElementById("alunos");
+  var html = "<tr><td>Nome</td><td>Nota1</td><td>Nota2</td><td>Media</td><td>Situação</td></tr>";
+  for(i=0; i< Aluno.dados.length; i++){
+    var a = Aluno.dados[i];
     html += "<tr>";
-    html += "<td>" + p.nome +  "</td>";
-    html += "<td>" + p.preco +  "</td>";
+    html += "<td>" + a.nome       +  "</td>";
+    html += "<td>" + a.nota1      +  "</td>";
+    html += "<td>" + a.nota2      +  "</td>";
+    html += "<td>" + a.mediaAluno +  "</td>";
+    html += "<td>" + a.situacao   +  "</td>";
     html += "</tr>";
   }
   objTabela.innerHTML = html;
 }
+
+function mostrarResumo(){
+  document.getElementById("mediaClasse").innerHTML = Aluno.mediaClasse();
+  document.getElementById("qtdAprovados").innerHTML = Aluno.qtdAprovados();
+  document.getElementById("qtdAlunosEmExame").innerHTML = Aluno.qtdAlunosEmExame();
+  document.getElementById("qtdAlunosReprovados").innerHTML = Aluno.qtdAlunosReprovados();
+}
+
+  
 
 
