@@ -11,7 +11,7 @@ var Aluno = function(){
   // metodo publico
   this.salvar = function(){
     //criando id automático
-    this.id = (Classe.dados.length + 1)
+    this.id = (Aluno.dados.length + 1);
     this.mediaAluno = (this.nota1 + this.nota2) / 2;
     if (this.mediaAluno >= 7){
     	this.situacao = "Aprovado"
@@ -20,28 +20,27 @@ var Aluno = function(){
     		} else {
     	      this.situacao = "Reprovado"
     		}
-    Classe.dados.push(this);
+    Aluno.dados.push(this);
   }
 }
 
-Classe.dados [];
+Aluno.dados = [];
 
 Aluno.mediaClasse = function(){
   var somaMediaAlunos = 0;
-  var qtdAlunos = 0;
-  for(i=0; i< Classe.dados.length; i++){
-    var c = Classe.dados[i];
+  for(i=0; i< Aluno.dados.length; i++){
+    var c = Aluno.dados[i];
     somaMediaAlunos += parseFloat(c.mediaAluno);
   }
 
-  var mediaClasse = somaMediaAlunos / Classe.dados.length;
+  var mediaClasse = somaMediaAlunos / Aluno.dados.length;
   return mediaClasse;
 }
 
 Aluno.qtdAprovados = function(){
   var qtdAprovados = 0;
-  for(i=0; i< Classe.dados.length; i++){
-  	if (this.situacao == "aprovado"){
+  for(i=0; i< Aluno.dados.length; i++){
+  	if (this.situacao == "Aprovado"){
   		qtdAprovados++;
   	}
   }
@@ -51,8 +50,8 @@ Aluno.qtdAprovados = function(){
 
 Aluno.qtdAlunosEmExame = function(){
   var qtdAlunosEmExame = 0;
-  for(i=0; i< Classe.dados.length; i++){
-  	if (this.situacao == "exame"){
+  for(i=0; i< Aluno.dados.length; i++){
+  	if (this.situacao == "Exame"){
   		qtdAlunosEmExame++;
   	}
   }
@@ -62,8 +61,8 @@ Aluno.qtdAlunosEmExame = function(){
 
 Aluno.qtdAlunosReprovados = function(){
   var qtdAlunosReprovados = 0;
-  for(i=0; i< Classe.dados.length; i++){
-  	if (this.situacao == "reprovado"){
+  for(i=0; i< Aluno.dados.length; i++){
+  	if (this.situacao == "Reprovado"){
   		qtdAlunosReprovados++;
   	}
   }
