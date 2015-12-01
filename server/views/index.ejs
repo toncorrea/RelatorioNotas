@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script type="text/javascript">
+    function excluirDoServidor(id){
+      if(confirm("Deseja excluir?")){
+        //redirect do client
+        window.location.href = "/aluno/excluir?id=" + id;
+      }
+    }
+    </script>
+  </head>
+  <body>
+
+    <h1>Entrada de notas dos Alunos.</h1>
+    <hr>
+    <form action="/aluno/salvar" method="post">
+      Nome  :
+      <input type="text" name="nomeAluno" value="<%= aluno.nome %>" id="nomeAluno" required ><br>
+      <input type="hidden" id="idAluno" name="id"  value="<%= aluno.id %>" >
+
+      Nota 1:
+      <input type="text" name="nota1" id="nota1" value="<%= aluno.nota1 %>" required><br>
+
+      Nota 2:
+      <input type="text" name="nota2" id="nota2" value="<%= aluno.nota2 %>" required><br>
+
+      <input type="submit" value="Salvar">
+      <hr>    
+    </form>
+    <h1>Relatório de Notas</h1>
+    <table id="alunos" border="1">
+      <% if(alunos.length > 0){ %>
+        <tr>
+          <td>Nome</td>
+          <td>Nota1</td>
+          <td>Nota2</td>
+          <td>Media</td>
+          <td>Situacao</td>
+          <td>editar</td>
+          <td>excluir</td>
+        </tr>
+        <% for(i = 0; i< alunos.length; i++){ %>
+          <% var a = alunos[i]; %>
+          <tr>
+            <td><%= a.nome %></td>
+            <td><%= a.nota1 %></td>
+            <td><%= a.nota2 %></td>
+            <td><%= a.mediaAluno %></td>
+            <td><%= a.situacao %></td>
+            <td><a href="/aluno/editar?id=<%= a.id %>">editar</a></td>
+            <td><a href="#" onclick="excluirDoServidor(<%= a.id %>)">excluir</a></td>
+          </tr>
+        <% } %>
+      <% } else { %>
+        Nenhum dado cadastrato
+      <% } %>
+    </table>
+
+    <hr>
+
+    <h1>Resumo da Classe.</h1>
+    <div>Media da Classe : <span id="mediaClasse"><%= mediaClasse %></span></div>
+    <div>Quantidade Aprovados : <span id="qtdAprovados"></span></div>
+    <div>Quantidade Alunos em Exame : <span id="qtdAlunosEmExame"></span></div>
+    <div>Quantidade Alunos Reprovados: <span id="qtdAlunosReprovados"></span></div>
+
+  </body>
+</html>
